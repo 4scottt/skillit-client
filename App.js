@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import * as imagePicker from 'expo-image-picker';
 
 import Button from './components/Button';
 import ImageViewer from './components/ImageViewer';
@@ -7,6 +8,19 @@ import ImageViewer from './components/ImageViewer';
 const PlaceholderImage = require('./assets/images/background-image.png');
 
 export default function App() {
+  const pickImageAsync = async () => {
+    let result = await imagePicker.launchImageLibraryAsync({
+      allowsEditing: true,
+      quality: 1,
+    });
+
+    if( !result.canceled ) {
+      console.log(result);
+    } else {
+      alert('You did not select an image');
+    }
+  };
+
   return (
     <View style={styles.container}>
 
@@ -17,7 +31,7 @@ export default function App() {
       </View>
 
       <View style={styles.footerContainer} >
-        <Button theme="primary" label="Sign Up" />
+        <Button theme="primary" label="Test Button" onPress={pickImageAsync} />
         <Button label="Log In" />
       </View>
 
