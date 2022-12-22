@@ -17,7 +17,7 @@ export default function App() {
       </View>
 
       <View style={styles.footerContainer} >
-        <Button label="Sign Up" />
+        <Button theme="primary" label="Sign Up" />
         <Button label="Log In" />
       </View>
 
