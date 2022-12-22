@@ -7,11 +7,14 @@ import Button from './components/Button';
 import ImageViewer from './components/ImageViewer';
 import CircleButton from './components/CircleButton';
 import IconButton from './components/IconButton';
-import EmojiiPicker from './components/EmojiiPicker';
+import EmojiiPicker from './components/EmojiPicker';
+import EmojiList from './components/EmojiList';
+import EmojiSticker from './components/EmojiSticker';
 
 const PlaceholderImage = require('./assets/images/background-image.png');
 
 export default function App() {
+  const [pickedEmoji, setPickedEmoji] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [showAppOptions, setShowAppOptions] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
@@ -52,10 +55,8 @@ export default function App() {
       {/* <Text style={{ color: 'yellow' }}>Open up App.js to start HACKING on your app!</Text> */}
 
       <View style={styles.imageContainer}>
-        <ImageViewer 
-          placeholderImageSource={PlaceholderImage}
-          selectedImage={selectedImage}
-          />
+        <ImageViewer placeholderImageSource={PlaceholderImage} selectedImage={selectedImage} />
+        { pickedEmoji !== null ? <EmojiSticker imageSize={40} stickerSource={pickedEmoji} /> : null }
       </View>
 
       { showAppOptions ? (
@@ -74,7 +75,7 @@ export default function App() {
       )}
 
       <EmojiiPicker isVisible={isModalVisible} onClose={onModalClose}>
-        {/* list of emojii here */}
+        <EmojiList onSelect={setPickedEmoji} onCloseModal={onModalClose} />
       </EmojiiPicker>
 
       <StatusBar style="auto" />
