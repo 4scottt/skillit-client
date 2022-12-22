@@ -28,6 +28,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f7e934d9-89e0-46ba-a9ec-6b5d4aabc705"
+      }
+    },
+    "owner": "4scottt"
   }
 }
