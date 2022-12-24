@@ -6,6 +6,7 @@ import { captureRef } from 'react-native-view-shot';
 
 import * as imagePicker from 'expo-image-picker';
 import * as MediaLibrary from 'expo-media-library';
+import * as SplashScreen from 'expo-splash-screen';
 import domtoimage from 'dom-to-image';
 
 import Button from './components/Button';
@@ -17,6 +18,10 @@ import EmojiList from './components/EmojiList';
 import EmojiSticker from './components/EmojiSticker';
 
 const PlaceholderImage = require('./assets/images/background-image.png');
+
+// splash screen testing
+SplashScreen.preventAutoHideAsync();
+setTimeout(SplashScreen.hideAsync, 5000);
 
 export default function App() {
   const imageRef = useRef();
@@ -117,7 +122,7 @@ export default function App() {
           <EmojiList onSelect={setPickedEmoji} onCloseModal={onModalClose} />
         </EmojiiPicker>
 
-        <StatusBar style="auto" />
+        <StatusBar style="light" />
       </View>
     </GestureHandlerRootView>
   );
